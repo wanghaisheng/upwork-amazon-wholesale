@@ -5,9 +5,6 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/jobs")
-async def job_feed():
-    return {
-        "jobs": await job_alerts()
-    }
-
+@app.get("/jobs/{keywords}")
+async def job_feed(keywords):
+    return {"jobs": await job_alerts(keywords)}
